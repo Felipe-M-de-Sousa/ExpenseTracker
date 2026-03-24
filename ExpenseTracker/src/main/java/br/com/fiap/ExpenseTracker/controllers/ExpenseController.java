@@ -23,27 +23,27 @@ public class ExpenseController {
     }
 
     @PostMapping
-    public ResponseEntity<Expense> createMovie(@RequestBody Expense expense){ //binding
+    public ResponseEntity<Expense> createExpense(@RequestBody Expense expense){ //binding
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(service.addExpense(expense));
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Expense> getMovieById(@PathVariable Long id){
+    public ResponseEntity<Expense> getExpenseById(@PathVariable Long id){
         log.info("Obtendo dados da despesa {}", id);
         return ResponseEntity.ok(service.getExpenseById(id));
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<Void> deleteMovie(@PathVariable Long id){
+    public ResponseEntity<Void> deleteExpense(@PathVariable Long id){
         log.info("Deletando despesa com id {}", id );
         service.deleteExpense(id);
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Expense> updateMovie(@PathVariable Long id, @RequestBody Expense expense){
+    public ResponseEntity<Expense> updateExpense(@PathVariable Long id, @RequestBody Expense expense){
         log.info("Atualizando despesa com id {} com os dados {}", id, expense);
         return ResponseEntity.ok( service.updateExpense(id, expense) );
     }
